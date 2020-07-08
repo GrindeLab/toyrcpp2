@@ -161,14 +161,13 @@ browseVignettes(package = "toyrcpp2")
 vignette(topic = "creating-rcpp-package", package = "toyrcpp2")
 ```
 
-If you get a message saying `No vignettes found...`, then you'll want to try installing the package from the `.tar.gz` file you created, above. To do this, click `Packages` > `Install` > change `Install from:` to "Package Archive File (.zip; .tar.gz)" > find the "pkgname_versionnumber.tar.gz" file > click `Install`. Then try browsing for vignettes again: 
+If you get a message saying `No vignettes found...`, then you'll want to try installing the package from the `.tar.gz` file you created, above. To do this, click `Packages` > `Install` > change `Install from:` to "Package Archive File (.zip; .tar.gz)" > find the "pkgname_versionnumber.tar.gz" file > click `Install`. Then try browsing for vignettes again. 
 
-```{r, eval = FALSE}
-# look for all vignettes associated with this package
-browseVignettes(package = "toyrcpp2")
+# Step 13: Set up package with Rcpp
 
-# look for a specific vignette called "creating-rcpp-package"
-vignette(topic = "creating-rcpp-package", package = "toyrcpp2")
-```
+Run `usethis::use_rcpp()`. 
+
+
+
 
 
