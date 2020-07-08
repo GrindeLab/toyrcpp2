@@ -1,6 +1,10 @@
 ---
-title: "creating-rcpp-package"
-output: rmarkdown::html_vignette
+title: "Creating an Rcpp Package"
+author: "Kelsey Grinde"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: 
+  rmarkdown::html_vignette: 
+    toc: true
 vignette: >
   %\VignetteIndexEntry{creating-rcpp-package}
   %\VignetteEngine{knitr::rmarkdown}
