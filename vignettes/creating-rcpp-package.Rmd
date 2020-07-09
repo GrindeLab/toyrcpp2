@@ -167,7 +167,55 @@ If you get a message saying `No vignettes found...`, then you'll want to try ins
 
 Run `usethis::use_rcpp()`. 
 
+Then, create a new file `R/toyrcpp2-package.R` that contains the following:
+
+```
+## usethis namespace: start
+#' @useDynLib toyrcpp2, .registration = TRUE
+## usethis namespace: end
+NULL
+## usethis namespace: start
+#' @importFrom Rcpp sourceCpp
+## usethis namespace: end
+NULL
+```
+
+(or is it : ???)
+
+```
+#' @useDynLib toyrcpp2
+#' @importFrom Rcpp sourceCpp
+NULL
+```
+
+Next, create a file `src/timesTwoCpp.cpp`. Enter the following:
 
 
+```
+#include <Rcpp.h>
+using namespace Rcpp;
+
+// This is a simple example of exporting a C++ function to R. You can
+// source this function into an R session using the Rcpp::sourceCpp
+// function (or via the Source button on the editor toolbar). Learn
+// more about Rcpp at:
+//
+//   http://www.rcpp.org/
+//   http://adv-r.had.co.nz/Rcpp.html
+//   http://gallery.rcpp.org/
+//
+// After you process with sourceCpp, you can run the R code timesTwoCpp(42)
+
+// [[Rcpp::export]]
+NumericVector timesTwoCpp(NumericVector x) {
+  return x * 2;
+}
+```
+
+Document:
+
+```{r, eval = FALSE}
+devtools::document()
+```
 
 
