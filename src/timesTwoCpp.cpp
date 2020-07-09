@@ -12,6 +12,14 @@ using namespace Rcpp;
 //
 // After you process with sourceCpp, you can run the R code timesTwoCpp(42)
 
+//' Multiply by two (Rcpp version)
+//'
+//' This function multiples numbers by two, using C++ code.
+//'
+//' @param x Numeric vector.
+//'
+//' @return A numeric vector that is double the input vector
+//' @export
 // [[Rcpp::export]]
 NumericVector timesTwoCpp(NumericVector x) {
   return x * 2;

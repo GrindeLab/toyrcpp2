@@ -163,11 +163,11 @@ vignette(topic = "creating-rcpp-package", package = "toyrcpp2")
 
 If you get a message saying `No vignettes found...`, then you'll want to try installing the package from the `.tar.gz` file you created, above. To do this, click `Packages` > `Install` > change `Install from:` to "Package Archive File (.zip; .tar.gz)" > find the "pkgname_versionnumber.tar.gz" file > click `Install`. Then try browsing for vignettes again. 
 
-# Step 13: Set up package with Rcpp
+# Step 13: Set up the package with Rcpp
 
 Run `usethis::use_rcpp()`. 
 
-Then, create a new file `R/toyrcpp2-package.R` that contains the following:
+Then, create a new file `R/toyrcpp2-package.R` that contains the following roxygen comments:
 
 ```
 ## usethis namespace: start
@@ -180,15 +180,9 @@ NULL
 NULL
 ```
 
-(or is it : ???)
+# Step 14: Add a C++ function
 
-```
-#' @useDynLib toyrcpp2
-#' @importFrom Rcpp sourceCpp
-NULL
-```
-
-Next, create a file `src/timesTwoCpp.cpp`. Enter the following:
+To add a new C++ function, create a file `src/timesTwoCpp.cpp`. Enter the following:
 
 
 ```
@@ -218,4 +212,61 @@ Document:
 devtools::document()
 ```
 
+This will update the `NAMESPACE` (adding `importFrom` and `useDynLib` from the roxygen comments we added in Step 13) and create `R/RcppExports.R` and `src/RcppExports.cpp` files.
 
+Next, build and reload the package:
+
+```{r, eval = FALSE}
+devtools::build()
+```
+
+and run `timesTwoCpp(455)` in the console and check that it works.
+
+
+# Step 15: Document the C++ function
+
+Each exported C++ function gets a wrapper function, located in `R/RcppExports.R`, that is automatically created using the process we went through in Step 14. For example, the `timesTwoCpp` function that we ran above is the R wrapper function for the C++ code that we wrote. 
+
+We can document this function using roxygen comments just like with usual R functions. The only distinction is that we'll use `//'` instead of `#'` to start each comment. For example, add roxygen comments to the `src/timesTwoCpp.cpp` file as follows:
+
+
+```
+#include <Rcpp.h>
+using namespace Rcpp;
+
+// This is a simple example of exporting a C++ function to R. You can
+// source this function into an R session using the Rcpp::sourceCpp
+// function (or via the Source button on the editor toolbar). Learn
+// more about Rcpp at:
+//
+//   http://www.rcpp.org/
+//   http://adv-r.had.co.nz/Rcpp.html
+//   http://gallery.rcpp.org/
+//
+// After you process with sourceCpp, you can run the R code timesTwoCpp(42)
+
+//' Multiply by two (Rcpp version)
+//'
+//' This function multiples numbers by two, using C++ code.
+//'
+//' @param x Numeric vector.
+//'
+//' @return A numeric vector that is double the input vector
+//' @export
+// [[Rcpp::export]]
+NumericVector timesTwoCpp(NumericVector x) {
+  return x * 2;
+}
+```
+
+Run
+
+```{r, eval = FALSE}
+devtools::document()
+```
+
+This should do the following:
+
+- add "export(timesTwoCpp)" to `NAMESPACE`
+- add roxygen comments to `R/RcppExports.R`
+- create `man/timesTwoCpp.Rd`
