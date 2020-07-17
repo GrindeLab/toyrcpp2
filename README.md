@@ -35,10 +35,10 @@ timesTwoCpp(455)
 #> [1] 910
 ```
 
-The two functions should give you the exact same R, since they implement
-the same task; one is just written using R code (`timesTwoR`) and the
-other uses C++ code (`timesTwoCpp`) which is called within R thanks to
-the `Rcpp` package.
+The two functions should give you the exact same result since they
+implement the same task; one is just written using R code (`timesTwoR`)
+and the other uses C++ code (`timesTwoCpp`) which is called within R
+thanks to the `Rcpp` package.
 
 As mentioned above, the most useful aspect of this package is the
 vignette. Take a look at the `creating-rcpp-package` vignette for a

@@ -619,7 +619,7 @@ body {
 <a class="sourceLine" id="cb2-3" title="3"><span class="co">#&gt; [1] 910</span></a>
 <a class="sourceLine" id="cb2-4" title="4"><span class="kw">timesTwoCpp</span>(<span class="dv">455</span>)</a>
 <a class="sourceLine" id="cb2-5" title="5"><span class="co">#&gt; [1] 910</span></a></code></pre></div>
-<p>The two functions should give you the exact same R, since they implement the same task; one is just written using R code (<code>timesTwoR</code>) and the other uses C++ code (<code>timesTwoCpp</code>) which is called within R thanks to the <code>Rcpp</code> package.</p>
+<p>The two functions should give you the exact same result since they implement the same task; one is just written using R code (<code>timesTwoR</code>) and the other uses C++ code (<code>timesTwoCpp</code>) which is called within R thanks to the <code>Rcpp</code> package.</p>
 <p>As mentioned above, the most useful aspect of this package is the vignette. Take a look at the <code>creating-rcpp-package</code> vignette for a description of the steps you need to take to create an R package using Rcpp.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">browseVignettes</span>(<span class="st">&quot;toyrcpp2&quot;</span>)</a></code></pre></div>
 
