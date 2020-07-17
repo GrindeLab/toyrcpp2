@@ -19,7 +19,7 @@ You can install the development version of `toyrcpp2` from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("GrindeLab/toyrcpp2")
+devtools::install_github("GrindeLab/toyrcpp2", build_vignettes = TRUE)
 ```
 
 ## Example
