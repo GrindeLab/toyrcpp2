@@ -288,8 +288,35 @@ devtools::check()
 
 You should no longer see a `WARNING` about having a non-standard license.
 
-# Step 17:
+# Step 17: Add a README file
 
+It's useful to have a README file that people can read when they access your package via GitHub. 
+
+To initialize a basic README file, run `use_readme_rmd()`:
+
+```{r, eval = FALSE}
+usethis::use_readme_rmd()
+```
+
+Open the new `README.Rmd` file and make the following changes:
+
+- describe the purpose of your package (see the pkgname section); feel free to borrow from your `DESCRIPTION` file
+- remove the CRAN installation instructions if your package is not on there
+- add some examples of how to use your package
+
+Once you've made these updates (and saved your changes), you'll need to render the RMarkdown file to create `README.md`: 
+
+```{r, eval = FALSE}
+rmarkdown::render("README.Rmd")
+```
+
+I'd recommend also adding the preview file `README.html` to the list of files that get ignored when you build your package:
+
+```{r, eval = FALSE}
+usethis::use_build_ignore("README.html")
+```
+
+Next, you should commit and push these changes to GitHub. You can view your README file by accessing your GitHub repository via the web.
 
 # Final Steps
 
