@@ -320,23 +320,26 @@ Next, you should commit and push these changes to GitHub. You can view your READ
 
 # Final Steps
 
-1. Build: 
+1. Check (and fix any errors, warnings, or notes that are identified):
+
+```{r, eval = FALSE}
+devtools::check()
+````
+
+
+2. Build: 
 
 ```{r, eval = FALSE}
 devtools::build()
 ```
 
-2. Install:
+3. Install:
 
 ```{r, eval = FALSE}
 devtools::install()
 ```
 
-3. Check: 
 
-```{r, eval = FALSE}
-devtools::check()
-````
 4. Look at vignettes: 
 
 ```{r, eval = FALSE}
