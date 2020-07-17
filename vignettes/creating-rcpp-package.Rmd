@@ -271,6 +271,25 @@ This should do the following:
 - add roxygen comments to `R/RcppExports.R`
 - create `man/timesTwoCpp.Rd`
 
+# Step 16: Update the package DESCRIPTION
+
+The `DESCRIPTION` file contains important metadata about your package. Some of the `devtools` functions you've run above have automatically updated this file, but you should make the following additional edits: 
+
+1. Give your package a `Title` (e.g., "Toy Package for Making Packages with Rcpp")
+2. Replace the `Author` and `Maintainer` fields with `Authors@R: person("First", "Last", email = "email@email.com", role = c("aut", "cre"))`
+3. Write a short `Description` for your package.
+4. Add a license (e.g., `usethis::use_mit_license("Your Name")`). You'll need to make sure your package license is compatible with the licenses of any other code you've included; more details [here](https://r-pkgs.org/src.html#src-licensing).
+
+Once you've made these updates, check your package:
+
+```{r, eval = FALSE}
+devtools::check()
+```
+
+You should no longer see a `WARNING` about having a non-standard license.
+
+# Step 17:
+
 
 # Final Steps
 
